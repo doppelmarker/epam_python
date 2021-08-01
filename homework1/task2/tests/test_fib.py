@@ -12,3 +12,11 @@ def test_fib_positive2():
 
 def test_fib_negative1():
     assert not check_fibonacci([0, 1, 1, 21, 124])
+
+
+def test_fib_negative2():
+    try:
+        check_fibonacci((0, 1))
+    except ValueError as err:
+        print(err.args)
+        assert True
