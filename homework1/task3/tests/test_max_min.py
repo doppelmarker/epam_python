@@ -1,6 +1,6 @@
 import os
 
-from task3.max_min.task3 import find_maximum_and_minimum
+from homework1.task3.max_min.task3 import find_maximum_and_minimum
 
 
 def test_max_min_positive1():
