@@ -1,6 +1,6 @@
 import os
 
-from homework2.task1.textwork.textwork import get_longest_diverse_words
+from homework2.task1.textwork.textwork import get_longest_diverse_words, get_rarest_char
 
 
 def test_get_longest_diverse_words():
@@ -17,3 +17,8 @@ def test_get_longest_diverse_words():
         "Verfassungsverletzungen",
         "politisch-strategischen",
     ]
+
+
+def test_get_rarest_char():
+    cur_path = os.path.dirname(__file__)
+    assert get_rarest_char(os.path.join(cur_path, "../textwork/data.txt")) == ")(X’îY‹›"
