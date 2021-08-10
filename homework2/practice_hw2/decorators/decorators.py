@@ -3,6 +3,22 @@ from functools import reduce, wraps
 from timeit import default_timer as timer
 
 
+def make_bold(f):
+    @wraps(f)
+    def wrapper(*args):
+        return "<b>" + f(*args) + "</b>"
+
+    return wrapper
+
+
+def make_italic(f):
+    @wraps(f)
+    def wrapper(*args):
+        return "<i>" + f(*args) + "</i>"
+
+    return wrapper
+
+
 def save(filename):
     def wrapper(f):
         @wraps(f)
@@ -71,4 +87,11 @@ def fib(n):
     return fib(n - 2) + fib(n - 1)
 
 
-print(fib(300))
+@make_bold
+@make_italic
+def welcome(name, surname):
+    return f"Welcome, {name} {surname}!"
+
+
+print(welcome)
+print(welcome("Mark", "Kanamori"))
