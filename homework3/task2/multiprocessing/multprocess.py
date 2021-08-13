@@ -2,7 +2,7 @@ import hashlib
 import random
 import struct
 import time
-from multiprocessing import Pool
+from concurrent.futures import ProcessPoolExecutor
 from timeit import default_timer as timer
 
 
@@ -31,9 +31,10 @@ def get_values():
 @benchmark
 def evaluate():
     values = get_values()
-    pool = Pool(processes=30)
-    results = pool.map(slow_calculate, values)
-    print(results)
+
+    with ProcessPoolExecutor(max_workers=50) as executor:
+        results = executor.map(slow_calculate, values)
+        print(list(results))
 
 
 if __name__ == "__main__":
