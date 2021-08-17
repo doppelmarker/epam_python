@@ -9,4 +9,5 @@ def fizzbuzz(n: int) -> Generator[str, None, None]:
         yield fizzes[i] + buzzes[i] or i
 
 
-print(list(fizzbuzz(100)))
+for element in fizzbuzz(100):
+    print(element)
