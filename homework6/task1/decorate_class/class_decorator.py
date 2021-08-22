@@ -19,8 +19,8 @@ def instances_counter(cls):
         saved_init(self, *args, **kwargs)
         instances += 1
 
-    """*args is needed in order to let get_created_instances and
-     reset_instances_counter methods behave both like normal and static"""
+    # *args is needed in order to let get_created_instances() and
+    # reset_instances_counter() methods behave both like normal and static
 
     def get_created_instances(*args):
         return instances
