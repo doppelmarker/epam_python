@@ -62,4 +62,5 @@ def tic_tac_toe_checker(board: List[List]) -> str:
         return "x wins!"
     elif o_wins:
         return "o wins!"
-    return "unfinished!"
+    else:
+        return "unfinished!"
