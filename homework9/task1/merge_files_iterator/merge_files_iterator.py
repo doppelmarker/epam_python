@@ -8,12 +8,11 @@ file2.txt:
 2
 4
 6
-# >>> list(merge_sorted_files(["file1.txt", "file2.txt"]))
+>>> list(merge_sorted_files(["file1.txt", "file2.txt"]))
 [1, 2, 3, 4, 5, 6]
 """
 import os
-from pathlib import Path
-from typing import Iterator, List, Union
+from typing import Iterator
 
 
 class FilesIterator:
@@ -31,18 +30,23 @@ class FilesIterator:
 
     def __next__(self):
         result = self.cur_file.readline().strip()
-        if result == "":
+        if result.isdigit():
+            result = int(result)
+
+        while result == "":
             self.cur_file.close()
             self.cur_file = None
             self.n += 1
             if self.n < len(self.file_names):
                 self.cur_filename = self.file_names[self.n]
                 self.cur_file = open(os.path.join(self.path, self.cur_filename))
-                result = self.cur_file.readline().strip()
-        if self.n < len(self.file_names):
-            return result
-        else:
-            raise StopIteration
+            else:
+                raise StopIteration
+            result = self.cur_file.readline().strip()
+            if result.isdigit():
+                result = int(result)
+
+        return result
 
 
 # def merge_sorted_files(file_list: List[Union[Path, str], ...]) -> Iterator:
