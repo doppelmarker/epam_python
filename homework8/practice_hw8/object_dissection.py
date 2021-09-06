@@ -11,14 +11,31 @@ class C:
 
     @classmethod
     def foo(cls):
-        pass
+        print("foo")
+
+    @staticmethod
+    def staticmethod():
+        print("staticmethod")
 
 
 x = C("abc")
-print(C.foo)
 print(C.__init__)
+print()
 print(C.hello)
+print()
+print(C.foo)
+print()
+print(C.staticmethod)
+print()
+print(C.__dict__)
+print()
+print()
+print(x.__init__)
+print()
 print(x.hello)
+print()
 print(x.foo)
+print()
+print(x.staticmethod)
+print()
 print(x.__dict__)
-print(x.__class__.__dict__)
