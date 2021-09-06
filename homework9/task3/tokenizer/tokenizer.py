@@ -10,7 +10,7 @@ For dir with two files from hw1.py:
 >>> universal_file_counter(test_dir, "txt", str.split)
 6
 >>> universal_file_counter(Path.cwd(), "txt")
-33
+31
 >>> universal_file_counter(Path.cwd(), "txt", str.split)
 58
 """
